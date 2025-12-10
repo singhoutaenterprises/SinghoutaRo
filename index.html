@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singhouta RO Service - Sales & Repair</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0284c7;       /* Brand Blue */
+            --primary-dark: #075985;
+            --accent: #e0f2fe;        /* Light Blue */
+            --whatsapp: #25D366;
+            --bg: #f8fafc;
+            --text-dark: #0f172a;
+            --text-gray: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-dark);
+            padding-bottom: 90px;
+        }
+
+        /* --- Header --- */
+        nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-contact {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 40px 20px 50px;
+            background: white;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 10px 30px -15px rgba(2, 132, 199, 0.08);
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: #e0f2fe;
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            border: 1px solid #bae6fd;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .hero h1 span { color: var(--primary); }
+
+        .hero p {
+            color: var(--text-gray);
+            font-size: 16px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .hero-actions { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+
+        .btn-main {
+            width: 100%; max-width: 320px;
+            padding: 16px; border-radius: 50px;
+            text-decoration: none; font-weight: 700; font-size: 18px;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: transform 0.2s;
+        }
+
+        .btn-call { background: var(--primary); color: white; box-shadow: 0 8px 20px rgba(2, 132, 199, 0.3); }
+        .btn-wa { background: white; color: var(--whatsapp); border: 2px solid var(--whatsapp); }
+        .btn-main:active { transform: scale(0.96); }
+
+        /* --- Container --- */
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .section-title { text-align: center; font-size: 24px; font-weight: 800; margin-bottom: 25px; }
+
+        /* --- Services Grid --- */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        @media (min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+        .card {
+            background: white; padding: 25px 20px;
+            border-radius: 16px; border: 1px solid #e0f2fe;
+            display: flex; align-items: center; gap: 20px;
+            transition: 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .card:hover { transform: translateY(-3px); border-color: var(--primary); }
+
+        .card-icon {
+            width: 50px; height: 50px; background: #f0f9ff; color: var(--primary);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;
+        }
+        .card-content h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+        .card-content p { font-size: 13px; color: var(--text-gray); }
+
+        /* --- Commercial Highlight --- */
+        .commercial-spotlight {
+            background: #1e293b; color: white; border-radius: 20px; padding: 30px 25px;
+            margin-top: 40px; position: relative; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(30, 41, 59, 0.3);
+        }
+        .comm-badge {
+            background: #f59e0b; color: #000; font-size: 11px; font-weight: 800;
+            text-transform: uppercase; padding: 5px 12px; border-radius: 4px;
+            display: inline-block; margin-bottom: 15px;
+        }
+        .comm-title { font-size: 24px; font-weight: 800; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .comm-desc { font-size: 14px; color: #cbd5e1; margin-bottom: 20px; line-height: 1.5; }
+        .comm-btn {
+            background: white; color: #1e293b; padding: 12px 25px;
+            border-radius: 50px; text-decoration: none; font-weight: 800; display: inline-block; width: 100%; text-align: center;
+        }
+
+        /* --- Spare Parts Section --- */
+        .parts-box {
+            background: white; border-radius: 20px; padding: 25px;
+            border: 1px solid #e0f2fe; margin-top: 40px;
+        }
+        .parts-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .part-tag { background: #f0f9ff; color: var(--primary-dark); padding: 8px 15px; border-radius: 30px; font-size: 13px; font-weight: 600; }
+
+        /* --- PREMIUM AMC CARD DESIGN --- */
+        .amc-premium-card {
+            background: linear-gradient(135deg, #0ea5e9, #2563eb); 
+            color: white;
+            border-radius: 24px;
+            padding: 40px 25px;
+            text-align: center;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden; 
+            box-shadow: 0 15px 35px rgba(14, 165, 233, 0.25);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .amc-premium-card h3 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .amc-premium-card p {
+            font-size: 15px;
+            opacity: 0.95;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+            line-height: 1.5;
+        }
+
+        .premium-btn {
+            background: white;
+            color: #0284c7;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 16px;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            position: relative;
+            z-index: 2;
+        }
+        .premium-btn:active { transform: scale(0.95); }
+
+        /* Water Droplet Effect */
+        .droplet {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            box-shadow: inset 2px 2px 10px rgba(255, 255, 255, 0.1);
+        }
+        .d1 { width: 80px; height: 80px; top: -20px; right: -20px; }
+        .d2 { width: 120px; height: 120px; bottom: -30px; left: -30px; opacity: 0.5; }
+        .d3 { width: 40px; height: 40px; top: 40px; right: 20%; opacity: 0.3; }
+
+        /* --- GUARANTEE CARD (Light Green) --- */
+        .guarantee-card {
+            background: #ecfdf5;
+            border: 1px solid #6ee7b7;
+            padding: 25px 20px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .guarantee-card h3 {
+            color: #15803d;
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .guarantee-card p {
+            color: #166534;
+            font-size: 13px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* --- Gallery Scroll --- */
+        .gallery-scroll {
+            display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px;
+            scroll-snap-type: x mandatory; margin-top: 15px;
+        }
+        .gallery-scroll::-webkit-scrollbar { display: none; }
+        .gallery-card {
+            min-width: 180px; background: white; border-radius: 12px; padding: 10px;
+            border: 1px solid #e2e8f0; scroll-snap-align: center;
+        }
+        .g-img {
+            width: 100%; height: 120px; border-radius: 8px; margin-bottom: 10px;
+            background: #f1f5f9; overflow: hidden; /* Ensures image stays in box */
+        }
+        
+        .g-img img {
+            width: 100%; height: 100%; object-fit: cover; /* Fits image perfectly */
+        }
+        
+        .gallery-card span { font-size: 13px; font-weight: 700; color: #444; display: block; text-align: center; }
+
+        /* --- FAQ Accordion --- */
+        .faq-item { margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+        details { padding: 15px; background: white; border-radius: 12px; cursor: pointer; border: 1px solid #f1f5f9; }
+        details[open] { background: #f0f9ff; border-color: #bae6fd; }
+        summary { font-weight: 700; color: var(--text-dark); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        summary::after { content: '+'; font-size: 18px; color: var(--primary); font-weight: 800; }
+        details[open] summary::after { content: '-'; }
+        details p { margin-top: 10px; font-size: 13px; color: #64748b; line-height: 1.5; }
+
+        /* --- Reviews --- */
+        .review-card {
+            background: white; padding: 20px; border-radius: 16px;
+            border: 1px solid #e0f2fe; margin-bottom: 15px;
+        }
+
+        /* --- Sticky Footer --- */
+        .sticky-bar {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: white; padding: 15px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            display: flex; gap: 12px; z-index: 999;
+        }
+        .sticky-btn {
+            flex: 1; padding: 14px; border-radius: 12px;
+            text-align: center; text-decoration: none; font-weight: 700;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .s-call { background: var(--primary); color: white; }
+        .s-wa { background: var(--whatsapp); color: white; }
+
+        .footer-legal { text-align: center; font-size: 11px; color: #94a3b8; margin: 40px 0 20px; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="https://singhouta.in" class="logo">
+            <i class="fa-solid fa-droplet"></i> Singhouta RO Service
+        </a>
+        <a href="tel:+919717485713" class="header-contact">
+            <i class="fa-solid fa-phone"></i> 97174 85713
+        </a>
+    </nav>
+
+    <header class="hero">
+        <div class="badges">
+            <div class="badge"><i class="fa-solid fa-shield-halved"></i> Genuine Parts</div>
+            <div class="badge"><i class="fa-solid fa-check"></i> Verified Staff</div>
+        </div>
+
+        <h1>Complete RO Sales<br><span>& Service Center</span></h1>
+        <p>From new machines to spare parts. We are Delhi's one-stop solution for all water purifier needs.</p>
+
+        <div class="hero-actions">
+            <a href="tel:+919717485713" class="btn-main btn-call">
+                <i class="fa-solid fa-phone"></i> Call Expert Now
+            </a>
+            <a href="https://wa.me/919717485713?text=Hi, I have an enquiry" class="btn-main btn-wa">
+                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <h2 class="section-title">Our Services</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-wrench"></i></div>
+                <div class="card-content">
+                    <h3>Service & Repair</h3>
+                    <p>Fixing leakage, motor issues, noise. All models serviced.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                <div class="card-content">
+                    <h3>New RO Sales</h3>
+                    <p>Best prices on Branded & Assembled RO units.</p>
+                </div>
+            </div>
+
+            <div class="card" style="border-color:#f59e0b; background:#fffbeb;">
+                <div class="card-icon" style="background:#fef3c7; color:#b45309;"><i class="fa-solid fa-industry"></i></div>
+                <div class="card-content">
+                    <h3>Commercial RO</h3>
+                    <p>Heavy-duty plants for Offices & Schools.</p>
+                    <span style="font-size:10px; font-weight:800; color:#b45309; text-transform:uppercase;">B2B Specialist</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-file-contract"></i></div>
+                <div class="card-content">
+                    <h3>AMC Plans</h3>
+                    <p>Annual contracts including filters & service visits.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-screwdriver"></i></div>
+                <div class="card-content">
+                    <h3>Installation</h3>
+                    <p>Professional wall mounting, shifting & un-installation.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-filter"></i></div>
+                <div class="card-content">
+                    <h3>Filter Change</h3>
+                    <p>Membrane replacement & full filter kit change.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="commercial-spotlight">
+            <span class="comm-badge">For Offices, Schools & Factories</span>
+            <div class="comm-title"><i class="fa-solid fa-building"></i> Commercial RO Plants</div>
+            <p class="comm-desc">We install and service heavy-duty plants ranging from <b>25 LPH to 200 LPH</b>. Get custom solutions for your business needs.</p>
+            
+            <a href="https://wa.me/919717485713?text=I need Commercial RO Quote" class="comm-btn">
+                Get B2B Quote
+            </a>
+        </div>
+
+        <div class="parts-box">
+            <h3 style="font-size:18px; margin-bottom:5px; color:var(--text-dark);"><i class="fa-solid fa-gears" style="color:var(--primary);"></i> Spare Parts Store</h3>
+            <p style="font-size:13px; color:#666;">We sell 100% genuine wholesale & retail parts.</p>
+            <div class="parts-list">
+                <span class="part-tag">Booster Pumps</span>
+                <span class="part-tag">RO Membranes</span>
+                <span class="part-tag">Adaptors (SMPS)</span>
+                <span class="part-tag">Carbon Filters</span>
+                <span class="part-tag">Sediment Filters</span>
+                <span class="part-tag">Solenoid Valves</span>
+                <span class="part-tag">UV Lamps</span>
+                <span class="part-tag">TDS Meters</span>
+                <span class="part-tag">FR & Pipes</span>
+            </div>
+            <div style="margin-top:20px; text-align:center;">
+                <a href="https://wa.me/919717485713?text=Do you have this spare part?" style="color:var(--primary); font-weight:700; text-decoration:none; font-size:14px;">
+                    Check Part Availability <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="amc-premium-card">
+            <div class="droplet d1"></div>
+            <div class="droplet d2"></div>
+            <div class="droplet d3"></div>
+
+            <h3>Best Value AMC Plans 👑</h3>
+            <p>Forget repair costs for 1 year. Get complete peace of mind.</p>
+            
+            <a href="https://wa.me/919717485713?text=Send AMC Plan Details" class="premium-btn">
+                Check Plans on WhatsApp
+            </a>
+        </div>
+
+        <div class="guarantee-card">
+            <h3><i class="fa-solid fa-hand-holding-heart"></i> Service Guarantee</h3>
+            <p>We stand by our work. If the same issue repeats within 30 days, we will fix it for FREE. No hidden charges.</p>
+        </div>
+
+        <div style="margin-top:50px;">
+            <h2 class="section-title">Recent Work</h2>
+            <div class="gallery-scroll">
+                
+                <div class="gallery-card">
+                    <div class="g-img">
+                        <img src="images/work1.jpg" alt="Filter Cleaning">
+                    </div>
+                    <span>Filter Cleaning</span>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="g-img">
+                        <img src="images/work2.jpg" alt="Installation">
+                    </div>
+                    <span>New Installation</span>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="g-img">
+                        <img src="images/work3.jpg" alt="Pump Repair">
+                    </div>
+                    <span>Pump Repair</span>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="g-img">
+                        <img src="images/work4.jpg" alt="Commercial Plant">
+                    </div>
+                    <span>Commercial Plant</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div style="margin-top:50px;">
+            <h2 class="section-title">Happy Customers</h2>
+            <div class="grid">
+                <div class="review-card">
+                    <div style="color:#f59e0b; font-size:12px; margin-bottom:5px;">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p style="font-size:13px; font-style:italic; color:#475569;">"Very professional service. Showed original parts before installing."</p>
+                    <b style="font-size:12px; display:block; margin-top:5px;">- Rahul S. (Verified)</b>
+                </div>
+                <div class="review-card">
+                    <div style="color:#f59e0b; font-size:12px; margin-bottom:5px;">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p style="font-size:13px; font-style:italic; color:#475569;">"Fixed my leakage issue in 30 minutes. Recommended."</p>
+                    <b style="font-size:12px; display:block; margin-top:5px;">- Amit V. (Verified)</b>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top:50px;">
+            <h2 class="section-title">Common Questions</h2>
+            <div class="faq-item">
+                <details>
+                    <summary>Is there a warranty on repairs?</summary>
+                    <p>Yes! We provide a <b>30-day service warranty</b>. If the same problem returns within 30 days, we fix it for FREE.</p>
+                </details>
+            </div>
+            <div class="faq-item">
+                <details>
+                    <summary>What is the visiting charge?</summary>
+                    <p>We offer a very <b>affordable visiting charge</b>. This fee covers the technician's visit, inspection, and professional diagnosis of the issue.</p>
+                </details>
+            </div>
+            <div class="faq-item">
+                <details>
+                    <summary>Do you use genuine parts?</summary>
+                    <p>Absolutely. We use 100% genuine spare parts and show them to you before installation.</p>
+                </details>
+            </div>
+        </div>
+
+        <div style="margin-top:40px;">
+            <h2 class="section-title">Service Area</h2>
+            <div style="width: 100%; height: 200px; background: #eee; border-radius: 12px; overflow: hidden; border:1px solid #e2e8f0;">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.83923192776!2d77.06889754721313!3d28.52728034389636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d:0x52c2b7494e204dce!2sNew Delhi, Delhi!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+            <a href="https://maps.google.com" target="_blank" style="display:block; text-align:center; margin-top:10px; color:var(--primary); font-weight:700; text-decoration:none;">
+                Open in Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="footer-legal">
+        © 2025 Singhouta RO Service. All Rights Reserved.<br>
+        <span style="opacity:0.6;">Privacy Policy • Terms of Service</span>
+    </div>
+
+    <div class="sticky-bar">
+        <a href="tel:+919717485713" class="sticky-btn s-call">
+            <i class="fa-solid fa-phone"></i> Call Now
+        </a>
+        <a href="https://wa.me/919717485713?text=Hi, I need RO Service" class="sticky-btn s-wa">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+    </div>
+
+</body>
+</html>
